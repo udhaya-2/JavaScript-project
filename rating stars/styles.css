@@ -1,0 +1,22 @@
+body{
+    display: flex;
+    justify-content: center;
+    margin-top:200px;
+    background-color: #cccc;
+}
+.app{
+    padding: 30px 70px;
+    background-color: #ffff;
+    box-shadow: 0 0 10px #000;
+    border-radius:10px ;
+    font-size: 40px;
+    
+}
+.star{
+   color: lightgray;
+   cursor: pointer;
+  
+}
+.star-highlight{
+ color: rgb(255, 215, 0);
+}
