@@ -1,0 +1,66 @@
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+#heading{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color:rgb(14, 228, 214);
+    font-size: 25px;
+    padding-left: 50px;
+}
+#heading span{
+       margin-left: 600px;
+}
+.container{
+   display: flex;
+   justify-content: center;
+   margin-top: 200px;
+}
+#click-me{
+    padding: 10px 20px;
+    background-color:rgb(14, 228, 214);
+    color: #000;
+    border: 5px  #fff;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px #031d1f;
+    cursor: pointer;
+}
+</style>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>color-flipper</title>
+    </head>
+    <body id="wrap">
+        <div id="heading">Color Flipper<span id="colortext">#FFFF</span></div>
+       
+            <div class="container">
+                <button id="click-me">Click Me</button>
+            </div>
+         
+    </body>
+<script>
+const button = document.getElementById('click-me')
+const wrap =document.getElementById('wrap')
+const colortext=document.getElementById('colortext')
+const hex =[0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F']
+function randamvalue(){
+    let randnum=Math.floor(Math.random()*16)
+     return hex[randnum]
+}
+button.addEventListener('click',()=>{
+    let hexcolour='#'
+    for(let i=1;i<7;i++){
+     hexcolour +=randamvalue()
+    }
+    wrap.style.backgroundColor=hexcolour
+    colortext.innerText=hexcolour
+})
+</script>
+</html>
