@@ -24,9 +24,12 @@ body{
 }
 input{
     margin-top:10px;
-    padding: 10px; 
+    padding: 10px ;
+    font-size: 20px;
     border-radius: 5px;
     margin-left: 40px;
+    outline: none;
+  
 }
 button#adds{
     padding:8px;
@@ -63,4 +66,14 @@ section h4{
     cursor: pointer; 
     padding: 5px;  
 }
-
+section .complete{
+  margin-top: 20px;
+  text-align: center
+}
+.complete hr{
+    border-color: #107ed2;
+}
+section span {
+      padding: 10px;
+      font-size: 18px;
+}
