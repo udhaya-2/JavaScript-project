@@ -1,54 +1,61 @@
 let input= document.querySelector('#input-box')
 let button = document.getElementById('adds')
-let completed=document.querySelector('.completed')
-let uncompleted=document.querySelector('.uncompleted')
-let complete=0
-let count=0
-let todos=[]
-
-
-// const read= new read()
-button.addEventListener('click',()=>{
-    if(input.value.trim()==''){
-        return
-    }
-    else{
-        todos.push({text:input.value,completed:false})
-        count = todos.length
-        addtodo(input.value)
-        input.value=''}
-})
-function Delete(todo){
-        complete--
-        count--
-        if(complete <0)
-            complete=0
-        completed.innerHTML=complete
-        if(todo >=0 && todo < todos.length){
-            todos.splice(todo,1)
-          }
-      addtodo()
-}
-
-function addtodo(){
-    if (count<0)
-        uncompleted.innerHTML=0
-    else
-       uncompleted.innerHTML=count
-    const tasklist= document.getElementById('Tasklist')
-    tasklist.innerHTML=''
-    todos.forEach((todo ,index)=>{
-    tasklist.innerHTML+=`<li class="list-style" style="list-style:none;"><span style="text-decoration:${todo.completed ? 'line-through':''}"> ${todo.text}</span>
-    <button class="delete"  role ="button" onclick="Delete(${index})">Delete</button>
-    <button class="finish" onclick="finish(${index})" id="finish">Finish</button>
-       </li>   `
-   })
+let list = document.getElementById('Tasklist')
+document.addEventListener("DOMContentLoaded",()=>{
+   const listitem=JSON.parse(localStorage.getItem("listitem"))
+   listitem.forEach((item)=>{
+      const li= document.createElement('li')
+      const divEL = document.createElement('div')
+      const deleteEl = document.createElement("button")
+      const spanvalue= document.createElement("span")
+      const checkboxEL = document.createElement("input")
+      checkboxEL.type='checkbox'
+      li.className ="list-style"
+      spanvalue.textContent =item.listitem
+      deleteEl.innerHTML=`&#10005;`
+      deleteEl.className="delete"
+      deleteEl.setAttribute('onclick','colseEL(event)')
+      checkboxEL.setAttribute('onclick','finish(event)');
+      divEL.append(checkboxEL,spanvalue)
+      li.append(divEL,deleteEl)
+      list.append(li)
    }
-function finish(index){
-      complete++
-      count--
-      completed.innerHTML=complete
-      todos[index].completed = !todos[index].completed;
-      addtodo();
+   )
+})
+function handlelist(){
+      if (input.value==="")
+         return;
+      const li= document.createElement('li')
+      const divEL = document.createElement('div')
+      const deleteEl = document.createElement("button")
+      const spanvalue= document.createElement("span")
+      const checkboxEL = document.createElement("input")
+      checkboxEL.type='checkbox'
+      li.className ="list-style"
+      spanvalue.textContent =input.value
+      deleteEl.innerHTML=`&#10005;`
+      deleteEl.className="delete"
+      deleteEl.setAttribute('onclick','colseEL(event)')
+      checkboxEL.setAttribute('onclick','finish(event)');
+      divEL.append(checkboxEL,spanvalue)
+      li.append(divEL,deleteEl)
+      list.append(li)
+      const storelist = localStorage.setItem("listitem",JSON.stringify([...JSON.parse(localStorage.getItem("listitem") || "[]"),{listitem: input.value}]))
+      input.value=""
 }
-
+function finish(event){
+         let read = event.target.nextSibling;
+         if(read.style.textDecoration==='line-through')
+            read.style.textDecoration=''
+         else
+            read.style.textDecoration='line-through'  
+      }
+input.addEventListener("keyup",(event)=>{
+   if(event.key==="Enter")
+      handlelist();
+})
+button.addEventListener('click',handlelist)
+function colseEL(event){
+     let close = event.target.parentNode;
+     close.remove()
+}

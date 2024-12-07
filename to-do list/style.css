@@ -15,7 +15,7 @@ body{
 .container{
     background-color: #020202;
     color: #fff;
-    padding:40px 70px 50px 70px;
+    padding:50px;
     border-radius: 8px;
     border: 3px solid #1C5D99;
 }
@@ -23,20 +23,22 @@ body{
     text-align: center;
 }
 input{
+    align-items: center;
     margin-top:10px;
+    /* width: 60%; */
     padding: 10px ;
     font-size: 20px;
     border-radius: 5px;
-    margin-left: 40px;
     outline: none;
   
 }
 button#adds{
-    padding:8px;
-    background-color:#107ed2;
+    padding:10px;
+    background-color:#49acf8;
     border-radius:5px;
-   font-weight: bolder;
-   cursor: pointer;
+    border: 1px solid #49acf8;
+    font-weight: bolder;
+    cursor: pointer;
 
 }
 section h4{
@@ -48,32 +50,33 @@ section h4{
 .list-style{
     display: flex;
     align-items: center;
-    margin-top:15px;
+    justify-content: space-between;
+    margin-top:10px;
     border: 2px solid white;
-    padding:12px ;
-    font-size: 15px;
     border-radius: 5px;
+    list-style: none;
+    padding: 5px;
+    font-size: 18px;
     
-}
+ } 
 .list-style span{
-    flex: 1;
+ padding-left: 5px;
 }
-
-.delete,.finish{
-    color: red;
+.delete{
+    color: #fff;
     background-color:#020202;
-    border: 0;
+    border: none;
     cursor: pointer; 
     padding: 5px;  
-}
-section .complete{
+ }
+/* section .complete{
   margin-top: 20px;
   text-align: center
 }
 .complete hr{
     border-color: #107ed2;
-}
-section span {
+} */ 
+/* section span {
       padding: 10px;
       font-size: 18px;
-}
+}*/
